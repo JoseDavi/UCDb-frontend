@@ -1,3 +1,4 @@
+import {requestGet} from "./loginModel.js";
 let $button = document.getElementById("buttonLogin");
 
 $button.addEventListener("click", function() {
@@ -9,15 +10,5 @@ $button.addEventListener("click", function() {
         "email": email,
         "password": password,
     }
-
-    fetch("http://localhost:8080/api/v1/users/", {
-            method: "GET",
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-type" : "application/json",
-                "Cache-Control" : "no-cache"
-            },
-            mode: 'cors',
-
-    }).then(console.log("logado"))
+    requestGet("http://localhost:8080/api/v1/auth/login",login);
 })
