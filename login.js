@@ -4,14 +4,10 @@ $button.addEventListener("click", function() {
 
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    let primeiroNome = document.getElementById("primeiroNome").value;
-    let ultimoNome = document.getElementById("ultimoNome").value;
 
     let login = {
         "email": email,
         "password": password,
-        "primeiroNome": primeiroNome,
-        "ultimoNome": ultimoNome
     }
 
     fetch("http://localhost:8080/api/v1/users/", {
@@ -24,5 +20,4 @@ $button.addEventListener("click", function() {
             mode: 'cors',
 
     }).then(console.log("logado"))
-
 })
