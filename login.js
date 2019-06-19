@@ -1,4 +1,4 @@
-let $button = document.getElementById("buttonCadastro");
+let $button = document.getElementById("buttonLogin");
 
 $button.addEventListener("click", function() {
 
@@ -15,15 +15,14 @@ $button.addEventListener("click", function() {
     }
 
     fetch("http://localhost:8080/api/v1/users/", {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-type" : "application/json",
                 "Cache-Control" : "no-cache"
             },
             mode: 'cors',
-            body: JSON.stringify(login)
 
-    }).then(console.log("ok"))
+    }).then(console.log("logado"))
 
 })
