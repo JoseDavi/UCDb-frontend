@@ -1,4 +1,4 @@
-import {requestGet} from "./loginModel.js";
+import {requestGet} from "../model/loginModel.js";
 let $button = document.getElementById("buttonLogin");
 
 $button.addEventListener("click", function() {
