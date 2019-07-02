@@ -1,6 +1,4 @@
-import "./psDisciplina.js";
-
-class Disciplinas extends HTMLElement {
+class buscarId extends HTMLElement {
     constructor() {
         super();
         this.$shadowRoot = this.attachShadow({"mode": "open"});
@@ -12,7 +10,7 @@ class Disciplinas extends HTMLElement {
     }
 
     async api() {
-        const url = "http://localhost:8080/api/v1/disciplinas/find/" + this.query;
+        const url = "http://localhost:8080/api/v1/perfilDisciplinas/" + this.query;
         try {
             let response = await fetch(url, {
                 method: "GET",
@@ -27,6 +25,8 @@ class Disciplinas extends HTMLElement {
                 throw response;
             }
             this.disciplinas = await response.json();
+            console.log(disciplinas);
+
         } catch (error) {
             const e = error.json();
             console.log(e);

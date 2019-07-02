@@ -1,12 +1,14 @@
-class psDisciplina extends HTMLElement {
+class psComentario extends HTMLElement {
     constructor() {
         super();
         this.$shadow = this.attachShadow({"mode": "open"});
     }
 
     async connectedCallback() {
-        this.nome =  this.innerHTML;
+        this.nome =  this.getAttribute("nome");
         this.id =  this.getAttribute("id");
+        this.texto = this.getAttribute("texto");
+        this.data = this.getAttribute("data");
         this.render();
     }
 
@@ -18,18 +20,14 @@ class psDisciplina extends HTMLElement {
             }
             </style>
             <div>
-                <p>${this.id} - ${this.nome}</p>
-                <button id="ir">Ir</button>
+                <p>${this.nome}</p>
+                <p>${this.texto}</p>
+                <p>${this.data}</p>
             </div>
         `;
-
         this.$shadow.innerHTML = html;
-        this.$shadow.getElementById("ir").onclick = () => { 
-            localStorage.setItem("perfil", this.id);
-            window.location.href = "../view/perfil.html";
-        }
     }
 }
 
 
-customElements.define("ps-disciplina", psDisciplina);
+customElements.define("ps-comentario", psComentario);
