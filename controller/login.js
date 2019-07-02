@@ -10,5 +10,8 @@ $button.addEventListener("click", function() {
         "email": email,
         "password": password,
     }
-    requestGet("http://localhost:8080/api/v1/auth/login",login);
+    requestGet("http://localhost:8080/api/v1/auth/login",login)
+    .then(() => {
+        window.location.assign("../view/logado.html");
+    });
 })

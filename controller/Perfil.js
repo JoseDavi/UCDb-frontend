@@ -1,7 +1,9 @@
 const idPerfil = localStorage.getItem("perfil");
+const email = sessionStorage.getItem("@email");
 var Perfil = {};
 
 import "../webComponent/psComentario.js";
+import {LikeApi} from "../model/curtiuModel.js";
 
 async function api() {
     const url = "http://localhost:8080/api/v1/perfilDisciplinas/" + idPerfil;
@@ -11,7 +13,8 @@ async function api() {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-type" : "application/json",
-                    "Cache-Control" : "no-cache"
+                    "Cache-Control" : "no-cache",
+                    "Authorization" : `Bearer ${sessionStorage.getItem("@token")}` 
                 },
                 mode: 'cors'
             }); 
@@ -22,7 +25,10 @@ async function api() {
             Perfil = await response.json();
         } catch (error) {
             const e = error.json();
-            console.log(e);
+            alert(e.message);
+            sessionStorage.setItem("@token","");
+            sessionStorage.setItem("@email","");
+            setInterval(window.location.assign("../view/index.html"));
         }
 }
 
@@ -47,3 +53,8 @@ function comment() {
 }
 
 render();
+document.getElementById("btnCurtir").onclick = () => {
+    LikeApi(idPerfil, email).then(() => {
+        render();
+    })
+};

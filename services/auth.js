@@ -2,19 +2,19 @@ const TOKEN = "@token";
 const EMAIL = "@email";
 
 const salvarToken = (token) => {
-    localStorage.setItem(TOKEN, token)
+    sessionStorage.setItem(TOKEN, token)
 }
 
 const salvarEmail = (email) => {
-    localStorage.setItem(EMAIL, email)
+    sessionStorage.setItem(EMAIL, email)
 }
 
 const getToken = () => {
-    return localStorage.getItem(TOKEN);
+    return sessionStorage.getItem(TOKEN);
 }
 
 const getEmail = () => {
-    return localStorage.getItem(EMAIL);
+    return sessionStorage.getItem(EMAIL);
 }
 
 export { salvarEmail, salvarToken, getEmail, getToken};
