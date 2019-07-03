@@ -1,8 +1,10 @@
+
+
 class buscarId extends HTMLElement {
     constructor() {
         super();
         this.$shadowRoot = this.attachShadow({"mode": "open"});
-        this.disciplinas = [];
+        this.disciplina = null;
     }
 
     async connectedCallback() {
@@ -10,7 +12,7 @@ class buscarId extends HTMLElement {
     }
 
     async api() {
-        const url = "http://localhost:8080/api/v1/perfilDisciplinas/" + this.query;
+        const url = "http://localhost:8080/api/v1/disciplinas/" + this.query;
         try {
             let response = await fetch(url, {
                 method: "GET",
@@ -24,9 +26,7 @@ class buscarId extends HTMLElement {
             if (!response.ok){
                 throw response;
             }
-            this.disciplinas = await response.json();
-            console.log(disciplinas);
-
+            this.disciplina = await response.json();
         } catch (error) {
             const e = error.json();
             console.log(e);
@@ -36,13 +36,10 @@ class buscarId extends HTMLElement {
     async render() {
         await this.api();
         this.$shadowRoot.innerHTML = "";
-        this.disciplinas.map(disciplina => {
-            let html = `
-                <ps-disciplina id=${disciplina.id}>${disciplina.nome}</ps-disciplina>
+        let html = `
+                <ps-disciplina id=${this.disciplina.id}>${this.disciplina.nome}</ps-disciplina>
             `;
-
-            this.$shadowRoot.innerHTML += html;
-        });
+        this.$shadowRoot.innerHTML = html;
     }
 
     static get observedAttributes() {
@@ -54,5 +51,4 @@ class buscarId extends HTMLElement {
         await this.render();
     }
 }
-
-customElements.define("lst-disciplinas", Disciplinas);
+customElements.define("lst-id", buscarId);
