@@ -25,8 +25,13 @@ class psDisciplina extends HTMLElement {
 
         this.$shadow.innerHTML = html;
         this.$shadow.getElementById("ir").onclick = () => { 
+            if(sessionStorage.getItem("@token")== undefined || sessionStorage.getItem("@token")==""){
+                alert("Você não está logado");
+                window.location.href = "../view/index.html";
+            }else{
             localStorage.setItem("perfil", this.id);
             window.location.href = "../view/perfil.html";
+            }
         }
     }
 }

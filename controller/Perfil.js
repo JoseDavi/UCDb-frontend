@@ -45,6 +45,7 @@ async function render() {
 }
 
 function comment() {
+    document.getElementById("com").innerHTML = "";
     Perfil.comentarios.map(c => {
         console.log(c);
         let html = `<ps-comentario nome=${c.usuario.primeiroNome} texto=${c.comentario} data = ${c.data_hr} id =${c.id} ></ps-comentario>`;

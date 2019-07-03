@@ -18,10 +18,14 @@
     <div>
         <br>
         <span>Comentario </span>
-        <input type = "text" name = "Comentario" id = "comentario">
+        <input id="txtComentar" type="text">
         <button id="btnComentar">comentar</button>
+        <div>
+            <lst-comentarios query="_" id="ds"></lst-comentarios>
+        </div>
     </div>
 
     <script type="module" src="../controller/Perfil.js"></script>
+    <script type="module" src="../controller/comentario.js"></script>
 </body>
 </html>
