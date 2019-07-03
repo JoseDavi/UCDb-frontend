@@ -1,5 +1,4 @@
 
-
 class buscarId extends HTMLElement {
     constructor() {
         super();
@@ -35,11 +34,13 @@ class buscarId extends HTMLElement {
 
     async render() {
         await this.api();
+        if(this.disciplina.id!=undefined){
         this.$shadowRoot.innerHTML = "";
         let html = `
                 <ps-disciplina id=${this.disciplina.id}>${this.disciplina.nome}</ps-disciplina>
             `;
         this.$shadowRoot.innerHTML = html;
+        }
     }
 
     static get observedAttributes() {
