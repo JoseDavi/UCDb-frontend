@@ -7,7 +7,7 @@ import {LikeApi} from "../model/curtiuModel.js";
 import {ComentarioApi} from "../model/comentarioModel.js";
 
 async function api() {
-    const url = "http://localhost:8080/api/v1/perfilDisciplinas/" + idPerfil;
+    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/" + idPerfil;
         try {
             let response = await fetch(url, {
                 method: "GET",
@@ -38,10 +38,11 @@ async function render() {
     const nome = document.getElementById("nome");
     const id = document.getElementById("id");
     const likes = document.getElementById("likes");
+    const ncomentarios = document.getElementById("ncomentarios");
     nome.innerHTML = "Nome: " + Perfil.disciplina.nome;
     id.innerHTML = "Id: " + Perfil.disciplina.id;
-    likes.innerHTML = "Numero de likes: " + Perfil.numeroLikes;
-
+    likes.innerHTML = "Número de likes: " + Perfil.numeroLikes;
+    ncomentarios.innerHTML = "Número de comentarios: " + Perfil.numeroComentarios;
     comment();
 }
 

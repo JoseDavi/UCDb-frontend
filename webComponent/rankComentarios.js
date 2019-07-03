@@ -11,7 +11,7 @@ class rankComentarios extends HTMLElement {
     }
     async api() {
         this.shadowRoot.innerHTML = "";
-        const url = "http://localhost:8080/api/v1/perfilDisciplinas/getByComentarios";
+        const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByComentarios";
         try {
             let response = await fetch(url, {
                 method: "GET",

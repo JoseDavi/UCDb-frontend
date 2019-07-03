@@ -1,6 +1,6 @@
 
 async function ComentarioApi(idPerfil, email, texto){
-    const url = "http://localhost:8080/api/v1/perfilDisciplinas/comentou/" + idPerfil + "/" + email;
+    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/comentou/" + idPerfil + "/" + email;
     try {
         let response = await fetch(url, {
             method: "POST",

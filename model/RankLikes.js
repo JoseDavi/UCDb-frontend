@@ -1,7 +1,7 @@
 async function RankLikes() {
         this.$shadowRoot = this.attachShadow({"mode": "open"});
         this.perfis = [];
-        const url = "http://localhost:8080/api/v1/perfilDisciplinas/getByLikes/";
+        const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByLikes/";
         try {
             let response = await fetch(url, {
                 method: "GET",
