@@ -4,6 +4,7 @@ var Perfil = {};
 
 import "../webComponent/psComentario.js";
 import {LikeApi} from "../model/curtiuModel.js";
+import {ComentarioApi} from "../model/comentarioModel.js";
 
 async function api() {
     const url = "http://localhost:8080/api/v1/perfilDisciplinas/" + idPerfil;
@@ -47,7 +48,6 @@ async function render() {
 function comment() {
     document.getElementById("com").innerHTML = "";
     Perfil.comentarios.map(c => {
-        console.log(c);
         let html = `<ps-comentario nome=${c.usuario.primeiroNome} texto=${c.comentario} data = ${c.data_hr} id =${c.id} ></ps-comentario>`;
         document.getElementById("com").innerHTML += html;
     });
@@ -56,6 +56,12 @@ function comment() {
 render();
 document.getElementById("btnCurtir").onclick = () => {
     LikeApi(idPerfil, email).then(() => {
+        render();
+    })
+};
+document.getElementById("btnComentar").onclick = () => {
+    let texto = document.getElementById("txtComentar").value;
+    ComentarioApi(idPerfil, email, texto).then(() =>{
         render();
     })
 };
