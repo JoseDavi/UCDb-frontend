@@ -1,6 +1,33 @@
 import "./psDisciplina.js";
 
 class rankLikes extends HTMLElement {
+
+    get likes() {
+        return this.hasAttribute('likes');
+      }
+    
+    set likes(val) {
+    // Reflect the value of the open property as an HTML attribute.
+        if (val) {
+            this.setAttribute('likes', '');
+        } else {
+            this.removeAttribute('likes');
+        }
+    }
+
+    get comentario() {
+        return this.hasAttribute('comentario');
+      }
+    
+    set comentario(val) {
+    // Reflect the value of the open property as an HTML attribute.
+        if (val) {
+            this.setAttribute('comentario', '');
+        } else {
+            this.removeAttribute('comentario');
+        }
+    }
+
     constructor() {
         super();
         this.$shadowRoot = this.attachShadow({"mode": "open"});
@@ -9,7 +36,7 @@ class rankLikes extends HTMLElement {
     async connectedCallback() {
         this.render();
     }
-    async api() {
+    async apiLikes() {
         const url = "http://localhost:8080/api/v1/perfilDisciplinas/getByLikes";
         try {
             let response = await fetch(url, {
@@ -32,12 +59,40 @@ class rankLikes extends HTMLElement {
         }
     }
 
+    async apiComentario() {
+        const url = "http://localhost:8080/api/v1/perfilDisciplinas/getByComentarios";
+        try {
+            let response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-type" : "application/json",
+                    "Cache-Control" : "no-cache",
+                    "Authorization" : `Bearer ${sessionStorage.getItem("@token")}` 
+                },
+                mode: 'cors'
+            });    
+            if (!response.ok){
+                throw response;
+            }
+            this.disciplinas = await response.json();
+        } catch (error) {
+            const e = error.json();
+            console.log(e);
+        }
+    }
+
     async render() {
-        await this.api();
+        console.log("ok");
+        if (this.likes) {
+            await this.apiLikes();
+        }
+        else await this.apiComentario();
+        console.log(this.disciplinas);
         this.$shadowRoot.innerHTML = "";
         this.disciplinas.map(disciplina => {
             let html = `
-                <ps-disciplina id=${disciplina.id}>${disciplina.disciplina.nome}>${disciplina.numeroLikes}</ps-disciplina>
+                <ps-disciplina id=${disciplina.id}>${disciplina.disciplina.nome} Likes: ${disciplina.numeroLikes} Comentarios: ${disciplina.numeroComentarios}</ps-disciplina>
             `;
 
             this.$shadowRoot.innerHTML += html;
