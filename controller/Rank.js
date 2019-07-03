@@ -1,10 +1,12 @@
-import {RankLikes} from "../model/RankLikes.js";
-
 document.getElementById('rankLikes').onclick = () => {
-    RankLikes();
+    if(document.getElementById("rank").shadowRoot != null){
+    document.getElementById("rank").shadowRoot.innerHTML = "";
+    }
+    import("../webComponent/rankLikes.js");
 };
-
 document.getElementById('rankComentarios').onclick = () => {
-    localStorage.setItem("perfil", idBusca);
-    window.location.href = "../view/perfil.html";
+    if(document.getElementById("rank").shadowRoot != null){
+        document.getElementById("rank").shadowRoot.innerHTML = "";
+        }
+    import("../webComponent/rankComentarios.js");
 };

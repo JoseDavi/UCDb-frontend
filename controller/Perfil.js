@@ -25,7 +25,7 @@ async function api() {
             Perfil = await response.json();
         } catch (error) {
             const e = error.json();
-            alert(e.message);
+            alert("Você não está logado");
             sessionStorage.setItem("@token","");
             sessionStorage.setItem("@email","");
             setInterval(window.location.assign("../view/index.html"));
