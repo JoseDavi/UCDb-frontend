@@ -1,4 +1,4 @@
-import "../webComponent/rankLikes.js";
+import "../model/RankLikes.js";
 
 
 

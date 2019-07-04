@@ -24,6 +24,6 @@ $button.addEventListener("click", function() {
             mode: 'cors',
             body: JSON.stringify(login)
 
-    }).then(console.log("ok"))
+    }).then(window.location.assign("../view/index.html"),alert("Cadastro Feito!"))
 
 })
