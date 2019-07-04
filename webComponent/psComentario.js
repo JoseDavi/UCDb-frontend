@@ -20,9 +20,9 @@ class psComentario extends HTMLElement {
             }
             </style>
             <div>
-                <p>${this.nome}</p>
+                <p>Usuario: ${this.nome}</p>
                 <p>${this.texto}</p>
-                <p>${this.data}</p>
+                <p>Data: ${this.data}</p>
             </div>
         `;
         this.$shadow.innerHTML = html;

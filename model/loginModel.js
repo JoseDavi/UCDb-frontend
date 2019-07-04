@@ -13,17 +13,18 @@ async function requestGet(url,login) {
             body:JSON.stringify(login)
 
         });
-
+        
         if (!response.ok){
             throw response;
         }
         let temp = await response.json();
-        let token = temp.token;
+        let token = temp.token; 
         salvarToken(token);
         salvarEmail(login.email);
     } catch(error){
         let erro = await error.json();
-        console.log(erro.message);
+        sessionStorage.getItem("@token") == "";
+        alert(erro.message);
     }
 }
 

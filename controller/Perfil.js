@@ -5,6 +5,7 @@ var Perfil = {};
 import "../webComponent/psComentario.js";
 import {LikeApi} from "../model/curtiuModel.js";
 import {ComentarioApi} from "../model/comentarioModel.js";
+import {DeleteApi} from "../model/comentarioModel.js";
 
 async function api() {
     const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/" + idPerfil;
@@ -49,8 +50,13 @@ async function render() {
 function comment() {
     document.getElementById("com").innerHTML = "";
     Perfil.comentarios.map(c => {
-        let html = `<ps-comentario nome=${c.usuario.primeiroNome} texto=${c.comentario} data = ${c.data_hr} id =${c.id} ></ps-comentario>`;
+        if(!c.foiDeletado){
+        let html = `<ps-comentario nome=${c.usuario.email} texto=${c.comentario} data = ${c.data_hr} id =${c.id} ></ps-comentario>`;
+        if(sessionStorage.getItem("@email") == c.usuario.email){
+            html +=  `<button id="buttonDeletar" aux=${c.id}> deletar comentario</button>`
+        }
         document.getElementById("com").innerHTML += html;
+    }
     });
 }
 
@@ -63,6 +69,17 @@ document.getElementById("btnCurtir").onclick = () => {
 document.getElementById("btnComentar").onclick = () => {
     let texto = document.getElementById("txtComentar").value;
     ComentarioApi(idPerfil, email, texto).then(() =>{
-        render();
+        window.location.assign("../view/perfil.html");
     })
 };
+render().then( ()=>{
+    if(document.getElementById("buttonDeletar")){
+    document.getElementById("buttonDeletar").onclick = () =>{
+        console.log("ok");
+        let aux = document.getElementById("buttonDeletar").getAttribute("aux");
+        DeleteApi(aux).then(() =>{
+            window.location.assign("../view/perfil.html");
+        })
+    }
+}
+})
