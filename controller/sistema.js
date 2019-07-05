@@ -14,7 +14,7 @@ $button.addEventListener("click", function() {
         "ultimoNome": ultimoNome
     }
 
-    fetch("http://ucdbufcgpsoft.herokuapp.com/api/v1/users/", {
+    fetch("https://ucdbufcgpsoft.herokuapp.com/api/v1/users/", {
             method: "POST",
             headers: {
                 "Access-Control-Allow-Origin": "*",

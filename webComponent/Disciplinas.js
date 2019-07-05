@@ -12,7 +12,7 @@ class Disciplinas extends HTMLElement {
     }
 
     async api() {
-        const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/disciplinas/find/" + this.query;
+        const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/disciplinas/find/" + this.query;
         try {
             let response = await fetch(url, {
                 method: "GET",

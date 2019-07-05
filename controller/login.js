@@ -8,7 +8,7 @@ $button.addEventListener("click", function() {
         "email": email,
         "password": password,
     }
-    requestGet("http://ucdbufcgpsoft.herokuapp.com/api/v1/auth/login",login)
+    requestGet("https://ucdbufcgpsoft.herokuapp.com/api/v1/auth/login",login)
     .then(() => {
         if(sessionStorage.getItem("@token")!= ""){
         window.location.assign("../view/logado.html");

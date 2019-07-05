@@ -1,6 +1,6 @@
 
 async function LikeApi(idPerfil, email){
-    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/curtiu/" + idPerfil + "/" + email;
+    const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/curtiu/" + idPerfil + "/" + email;
     try {
         let response = await fetch(url, {
             method: "POST",

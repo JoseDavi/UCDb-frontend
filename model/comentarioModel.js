@@ -1,6 +1,6 @@
 
 async function ComentarioApi(idPerfil, email, texto){
-    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/comentou/" + idPerfil + "/" + email;
+    const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/comentou/" + idPerfil + "/" + email;
     try {
         let response = await fetch(url, {
             method: "POST",
@@ -22,7 +22,7 @@ async function ComentarioApi(idPerfil, email, texto){
 }
 
 async function DeleteApi(idcomentario){
-    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/deleteComentario/" + idcomentario;
+    const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/deleteComentario/" + idcomentario;
     try {
         let response = await fetch(url, {
             method: "DELETE",

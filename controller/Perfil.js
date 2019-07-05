@@ -8,7 +8,7 @@ import {ComentarioApi} from "../model/comentarioModel.js";
 import {DeleteApi} from "../model/comentarioModel.js";
 
 async function api() {
-    const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/" + idPerfil;
+    const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/" + idPerfil;
         try {
             let response = await fetch(url, {
                 method: "GET",
@@ -75,7 +75,6 @@ document.getElementById("btnComentar").onclick = () => {
 render().then( ()=>{
     if(document.getElementById("buttonDeletar")){
     document.getElementById("buttonDeletar").onclick = () =>{
-        console.log("ok");
         let aux = document.getElementById("buttonDeletar").getAttribute("aux");
         DeleteApi(aux).then(() =>{
             window.location.assign("../view/perfil.html");

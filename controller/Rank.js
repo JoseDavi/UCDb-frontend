@@ -12,6 +12,5 @@ document.getElementById('rankComentarios').onclick = () => {
     document.getElementById('display').innerText = "";
     let $comentario = document.createElement('like-disciplinas');
     $comentario.setAttribute('comments', '');
-    console.log($comentario);
     document.getElementById('display').appendChild($comentario);
 };

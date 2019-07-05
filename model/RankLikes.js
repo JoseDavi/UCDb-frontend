@@ -37,7 +37,7 @@ class RankLikes extends HTMLElement {
         this.render();
     }
     async apiLikes() {
-        const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByLikes";
+        const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByLikes";
         try {
             let response = await fetch(url, {
                 method: "GET",
@@ -60,7 +60,7 @@ class RankLikes extends HTMLElement {
     }
 
     async apiComentario() {
-        const url = "http://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByComentarios";
+        const url = "https://ucdbufcgpsoft.herokuapp.com/api/v1/perfilDisciplinas/getByComentarios";
         try {
             let response = await fetch(url, {
                 method: "GET",
